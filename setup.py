@@ -11,7 +11,7 @@ setuptools.setup(
     version = "0.0.4",
     author = "iiPython",
     author_email = "ben@iipython.cf",
-    description = "Package to generate 'throwaway' keys for encrypting information",
+    description = "Package to generate 'throwaway keys' for encrypting information",
     long_description = description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/ii-Python/throwaway-keys",

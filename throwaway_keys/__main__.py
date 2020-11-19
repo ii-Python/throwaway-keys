@@ -1,27 +1,25 @@
 # Modules
-import sys
 import random
 import hashlib
+
 import datetime
+from sys import argv
 
 try:
-    import termcolor
+    from termcolor import colored
 except ImportError:
 
-    class termcolor:
+    colors = {
+        "red": "\033[91m",
+        "green": "\033[92m",
+        "cyan": "\033[36m",
+        "blue": "\033[94m",
+        "yellow": "\033[93m",
+        "reset": "\033[0m"
+    }
 
-        def __init__(self):
-            self.colors = {
-                "red": "\033[91m",
-                "green": "\033[92m",
-                "cyan": "\033[36m",
-                "blue": "\033[94m",
-                "yellow": "\033[93m",
-                "reset": "\033[0m"
-            }
-
-        def colored(text, color):
-            return self.colors[color] + text + self.colors["reset"]
+    def colored(text, color):
+        return colors[color] + text + colors["reset"]
 
 # Exceptions
 class InvalidRounds(Exception):
@@ -33,7 +31,7 @@ class InvalidLength(Exception):
 # Argument functions
 def use(lib):
 
-    if "--use-" + lib in sys.argv:
+    if "--use-" + lib in argv:
 
         return True
 
@@ -41,7 +39,7 @@ def use(lib):
 
 def get_rounds():
 
-    for arg in sys.argv:
+    for arg in argv:
 
         if arg.startswith("--rounds="):
 
@@ -58,7 +56,7 @@ def get_rounds():
 
 def get_length():
 
-    for arg in sys.argv:
+    for arg in argv:
 
         if arg.startswith("--length="):
 
@@ -97,6 +95,25 @@ generators = {
     "blake2s": hashlib.blake2s
 }
 
+# Help command
+if "-h" in argv or "--help" in argv:
+
+    print("The", colored("Throwaway Key", "yellow"), "Project")
+    print("=========================")
+
+    print()
+    print("usage: python3 -m throwaway_keys [options]")
+    print("available hashing algorithms:")
+
+    print(" ", "".join(_ + ", " for _ in generators)[:-2])
+
+    print()
+    print("to use a custom generator: --use-<generator_name>")
+    print("to setup custom rounds: --rounds=<integer>")
+    print("to setup custom length: --length=<integer> (only applicable with some generators)")
+
+    exit()
+
 length = get_length()
 generator = hashlib.sha512
 for gen in generators:
@@ -110,7 +127,8 @@ def generate_base(generator):
 
     if generator in unsafe:
 
-        print(termcolor.colored("Warning: you are using an unsafe or crackable generator ({}); consider changing.".format(generator.__name__), "red"))
+        print(colored("Warning: you are using an unsafe or crackable generator ({}); consider changing.".format(generator.__name__), "red"))
+        print()
 
     num = str(random.randint(100 * 100 * 100, 999 * 100 * 100))
     hash = generator(num.encode("UTF-8"))
@@ -119,8 +137,9 @@ def generate_base(generator):
         return hash.hexdigest(length = length)
     except:
         if length != 75:
-            print(termcolor.colored("Notice: the generator you are using ({}) does not support custom length.".format(generator.__name__), "yellow"))
-        
+            print(colored("Notice: the generator you are using ({}) does not support custom length.".format(generator.__name__), "yellow"))
+            print()
+
         return hash.hexdigest()
 
 def make_hash(key, generator):
@@ -140,8 +159,6 @@ for _ in range(1, rounds + 1):
     key = make_hash(key, generator)
 
 finish = round((datetime.datetime.now() - begin).total_seconds(), 2)
-
-print()
 
 print("End result: '{}'".format(key))
 print("Finished in: {} seconds".format(finish))
