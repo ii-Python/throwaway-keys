@@ -1,0 +1,8 @@
+# Hide .git
+.git/
+
+# Hide builds
+build/
+dist/
+
+throwaway_keys.egg-info
