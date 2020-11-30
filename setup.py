@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
 # Begin setup
 setuptools.setup(
     name = "throwaway-keys",
-    version = "0.0.6",
+    version = "0.0.7",
     author = "iiPython",
     author_email = "ben@iipython.cf",
     description = "Package to generate 'throwaway keys' for encrypting information",
