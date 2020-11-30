@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
 # Begin setup
 setuptools.setup(
     name = "throwaway-keys",
-    version = "0.0.5",
+    version = "0.0.6",
     author = "iiPython",
     author_email = "ben@iipython.cf",
     description = "Package to generate 'throwaway keys' for encrypting information",
@@ -16,10 +16,18 @@ setuptools.setup(
     long_description_content_type = "text/markdown",
     url = "https://github.com/ii-Python/throwaway-keys",
     packages = setuptools.find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
+    classifiers = [
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "Environment :: Console",
+        "Development Status :: 2 - Pre-Alpha",
+        "Natural Language :: English",
+        "Topic :: Security :: Cryptography"
     ],
-    python_requires = ">=3.8"
+    keywords = ["keys", "sha256", "encryption", "hashlib"],
+    python_requires = ">=3.6.2"
 )
