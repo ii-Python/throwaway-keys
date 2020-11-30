@@ -1,5 +1,8 @@
+# Modules
 from shutil import rmtree
 
-rmtree("throwaway_keys.egg-info")
+# Remove directories
 rmtree("dist")
 rmtree("build")
+
+rmtree("throwaway_keys.egg-info")

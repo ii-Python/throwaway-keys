@@ -6,7 +6,7 @@ build/
 dist/
 
 # Hide eggs
-throwaway_keys.egg-info
+*.egg-info
 
 # Hide cache
 __pycache__/
