@@ -1,5 +1,6 @@
 # Throwaway Key Project
 ### Super simple encryption keys for your project
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org) [![PyPI version fury.io](https://badge.fury.io/py/throwaway-keys.svg)](https://pypi.python.org/pypi/throwaway-keys/) [![PyPI license](https://img.shields.io/pypi/l/throwaway-keys.svg)](https://pypi.python.org/pypi/throwaway-keys/) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/throwaway-keys.svg)](https://pypi.python.org/pypi/throwaway-keys/)
 ---
 
 The Throwaway Key Project is designed to solve the problem of having people crack your encryption methods.
