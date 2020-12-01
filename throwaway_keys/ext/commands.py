@@ -1,7 +1,7 @@
 # Modules
 import sys
-from libs.colors import colored
-from ext.defaults import generators
+from throwaway_keys.libs.colors import colored
+from throwaway_keys.ext.defaults import generators
 
 # Locate all arguments
 def load_args():

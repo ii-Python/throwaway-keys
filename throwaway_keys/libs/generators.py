@@ -3,7 +3,7 @@ import random
 import hashlib
 
 from .colors import colored
-from ext.logging import warn
+from throwaway_keys.ext.logging import warn
 
 # "Unsafe" generators
 unsafe = [hashlib.md5, hashlib.sha1]

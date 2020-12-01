@@ -1,5 +1,5 @@
 # Modules
-from libs.colors import colored
+from throwaway_keys.libs.colors import colored
 
 # Simple loggers
 def warn(m):
